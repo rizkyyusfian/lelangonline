@@ -1,23 +1,25 @@
-<?php
-	session_start();
-
-	if(isset($_SESSION['mylogin_username']))
-	{
-		header("location: home.php");
-	}
-?>
-
+<!DOCTYPE html>
+<!-- 
+Template Name: Conquer - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 2.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-template/3716838?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<!DOCTYPE html>
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-	<meta charset="utf-8"/>
-	<title>Login</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8"/>
+<title>Conquer | Login</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="" name="description"/>
 <meta content="" name="author"/>
@@ -43,63 +45,74 @@
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<body>
-	<?php
-		if(isset($_SESSION['error'])) 
-		{
-			echo $_SESSION['error'];
-			unset($_SESSION['error']);
-		}
-	?>
-	<!-- BEGIN BODY -->
+<!-- BEGIN BODY -->
 <body class="login">
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<a href="">
+	<a href="#">
 	<img src="" alt=""/>
 	</a>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
-	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="process/login_process.php" method="post">
-		<h3 class="form-title">Login to your account</h3>
-		<div class="alert alert-danger display-hide">
-			<button class="close" data-close="alert"></button>
-			<span>
-			Enter any username and password. </span>
+	<!-- BEGIN REGISTRATION FORM -->
+	<form class="login-form" action="process/register_process.php" method="post">
+		<h3>Sign Up</h3>
+		<p>
+			 Enter your account details below:
+		</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">ID User</label>
+			<div class="input-icon">
+				<i class="fa fa-user"></i>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idreg" required/>
+			</div>
 		</div>
 		<div class="form-group">
-			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idlogin" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="namereg" required/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
 			<div class="input-icon">
 				<i class="fa fa-lock"></i>
-				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passlogin" required/>
+				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="passreg" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+			<div class="controls">
+				<div class="input-icon">
+					<i class="fa fa-check"></i>
+					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="passregrepeat" required"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>
+			<input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+			</label>
+			<div id="register_tnc_error">
 			</div>
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-info pull-right" name="btnsubmit">
-			Login </button>
+			<input type="submit" id="register-submit-btn" class="btn btn-info pull-right" name="btnsubmit" value="Sign Up"><i class="m-icon-swapright m-icon-white"></i>
 		</div>
-		<div class="create-account">
-			<p>
-				 Don't have an account yet ?&nbsp; <a href="register.php" id="register-btn">Create an account</a>
+			<div class="create-account">
+			<p>Already have an account ?&nbsp; <a href="login.php" id="register-btn">Sign in Here</a>
 			</p>
 		</div>
 	</form>
-	<!-- END LOGIN FORM -->	
+	<!-- END REGISTRATION FORM -->
+</div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-	2020 &copy;MRYY. Admin Dashboard Template.
+	 2020 &copy;MRYY. Admin Dashboard Template.
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -140,4 +153,5 @@ jQuery(document).ready(function() {
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
+<!-- END BODY -->
 </html>
