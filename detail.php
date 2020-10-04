@@ -1,6 +1,6 @@
 <?php 
-	session_start();
-	date_default_timezone_set("Asia/Jakarta");
+	// session_start();
+	// date_default_timezone_set("Asia/Jakarta");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
