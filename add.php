@@ -115,7 +115,27 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			Disini isinya
+			<form id="frmData" method="POST" action="process/add_process.php" enctype=multipart/form-data>
+				<h1>Welcome, <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+				<h3>ADD ITEM</h3>
+				<p>isi data mengenai item yang akan dilelang</p>
+					<table>
+						<tr>
+							<td style="text-align: center;"><label>Nama Barang :</label></td>
+							<td><input type="text" name="itemname"></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;"><label>Harga Awal :</label></td>
+							<td><input type="text" name="itemprice"></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;"><label>Gambar :</label></td>
+							<td><input type="file" name="itempicture"></td>
+						</tr>
+					</table>
+					<br><br>
+					<button id="btnSubmit">Add Item</button>
+			</form>
 		</div>
 	</div>
 	<!-- END CONTENT -->
