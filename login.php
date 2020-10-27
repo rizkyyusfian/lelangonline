@@ -39,7 +39,8 @@
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href=""/>
 </head>
-<body>
+<!-- BEGIN BODY -->
+<body class="login">
 	<?php
 		if(isset($_SESSION['error'])) 
 		{
@@ -47,8 +48,6 @@
 			unset($_SESSION['error']);
 		}
 	?>
-	<!-- BEGIN BODY -->
-<body class="login">
 <!-- BEGIN LOGO -->
 <div class="logo">
 	<a href="">
