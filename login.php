@@ -81,8 +81,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-info pull-right" name="btnsubmit" id="btnsubmit">
-			Login </button>
+			<input type="submit" class="btn btn-info pull-right" name="btnsubmit" id="btnsubmit" value="Login"/>
 		</div>
 		<div class="create-account">
 			<p>
