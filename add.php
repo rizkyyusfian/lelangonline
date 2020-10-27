@@ -89,21 +89,15 @@
 					</form>
 				</li>
 				<li class="start active ">
-					<a href="#">
+					<a href="home.php">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
 					</a>
 				</li>
 				<li >
-					<a href="home.php">
-					<i class="icon-puzzle"></i>
-					<span class="title">Home</span>
-					</a>
-				</li>
-				<li >
 					<a href="process/login_process.php?action=logout">
-					<i class="icon-present"></i>
+					<i class="fa fa-level-down"></i>
 					<span class="title">Log Out</span>
 					</a>
 				</li>

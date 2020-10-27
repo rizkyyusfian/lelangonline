@@ -95,13 +95,13 @@
 				</li>
 				<li >
 					<a href="add.php">
-					<i class="icon-puzzle"></i>
+					<i class="fa fa-plus"></i>
 					<span class="title">Add Item</span>
 					</a>
 				</li>
 				<li>
 					<a href="process/login_process.php?action=logout">
-					<i class="icon-present"></i>
+					<i class="fa fa-level-down"></i>
 					<span class="title">Log Out</span>
 					</a>
 				</li>

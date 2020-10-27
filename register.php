@@ -85,7 +85,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<input type="submit" id="register-submit-btn" class="btn btn-info pull-right" name="btnsubmit" value="Sign Up"><i class="m-icon-swapright m-icon-white"></i>
+			<input type="submit" id="btnsubmit" class="btn btn-info pull-right" name="btnsubmit" value="Sign Up"><i class="m-icon-swapright m-icon-white"></i>
 		</div>
 			<div class="create-account">
 			<p>Already have an account ?&nbsp; <a href="login.php" id="register-btn">Sign in Here</a>
