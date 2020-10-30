@@ -36,7 +36,7 @@
 <link href="assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="style/home_style.css">
+<!-- <link rel="stylesheet" type="text/css" href="style/home_style.css"> -->
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
@@ -115,8 +115,9 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<h1>Welcome, <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
-<table>	
+		<h1>Welcome <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+		<h3><b>List Items</b></h3>
+<table class="table">
 	<thead>
 		<tr>
 			<th>Id Item</th>
@@ -167,7 +168,7 @@
 			$hasil .= "<td>Rp. ".number_format($row['price_initial'])."</td>";
 			$hasil .= "<td>".$row['status']."</td>";
 			$foto   = "folder_item/".$row['name'].".".$row['image_extension'];
-			$hasil .= "<td><img src='$foto'></td>";
+			$hasil .= "<td><img style='width:200px; height:200px;' src='$foto'></td>";
 			if($row['iduser_owner'] == $_SESSION['mylogin_username']) 
 			{
 				if($row['status'] == "OPEN")

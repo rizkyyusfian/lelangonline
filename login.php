@@ -80,6 +80,11 @@
 					echo $_SESSION['error'];
 					unset($_SESSION['error']);
 				}
+				if(isset($_SESSION['statusReg'])) 
+				{
+					echo $_SESSION['statusReg'];
+					unset($_SESSION['statusReg']);
+				}
 			?>
 		</div>
 

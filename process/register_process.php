@@ -24,6 +24,8 @@ if($_POST['btnsubmit']) {
 		$stmt->bind_param("ssss", $iduser, $name, $pwd_hash, $salt);
 		$stmt->execute();
 		$mysqli->close();
+
+		$_SESSION['statusReg'] = "Akun Berhasil Dibuat. Silahkan Login";
 		header("location: ../login.php");
 	}
 }
