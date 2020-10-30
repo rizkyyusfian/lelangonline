@@ -1,0 +1,22 @@
+table { 
+	border-collapse: collapse; 
+	width: 10%;
+}
+table, th, td {
+	border: 1px solid black; 
+}
+th {
+background-color: #ccffff;
+}
+td { 
+	background-color: #cfcfcf;
+}
+img { 
+	display: block;  
+	height: 20%; 
+	width: 20%;
+}
+
+.hide {
+	display: none;
+}
