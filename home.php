@@ -39,7 +39,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="style/home_style.css"> -->
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -116,6 +116,15 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 		<h1>Welcome <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+		<p>
+		<?php
+				if(isset($_SESSION['statusAdd'])) 
+				{
+					echo $_SESSION['statusAdd'];
+					unset($_SESSION['statusAdd']);
+				}
+			?>
+		</p>
 		<h3><b>List Items</b></h3>
 <table class="table">
 	<thead>
@@ -168,16 +177,16 @@
 			$hasil .= "<td>Rp. ".number_format($row['price_initial'])."</td>";
 			$hasil .= "<td>".$row['status']."</td>";
 			$foto   = "folder_item/".$row['name'].".".$row['image_extension'];
-			$hasil .= "<td><img style='width:200px; height:200px;' src='$foto'></td>";
-			if($row['iduser_owner'] == $_SESSION['mylogin_username']) 
+			$hasil .= "<td><img style='width:250px; height:200px;' src='$foto'></td>";
+			if($row['iduser_owner'] == $_SESSION['mylogin_userid']) 
 			{
 				if($row['status'] == "OPEN")
 				{
-					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input type='submit' name='btnCancel' value='Cancel'></form></td>";
+					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-info' type='submit' name='btnCancel' value='Cancel'></form></td>";
 				}
 				elseif ($row['status'] == "CANCEL") 
 				{
-					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input type='submit' name='btnOpen' value='Open'></form></td>";
+					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-info' type='submit' name='btnOpen' value='Open'></form></td>";
 				}
 				elseif ($row['status'] == "SOLD")
 				{

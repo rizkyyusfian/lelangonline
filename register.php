@@ -80,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<p style="color:red;">
 			<?php
 				if(isset($_SESSION['error'])) 
 				{
@@ -88,7 +88,7 @@
 					unset($_SESSION['error']);
 				}
 			?>
-		</div>
+		</p>
 		<div class="form-group">
 			<label>
 			<input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>

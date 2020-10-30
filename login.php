@@ -73,20 +73,24 @@
 				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passlogin" id="passlogin" required/>
 			</div>
 		</div>
-		<div class="form-group">
+		<p style="color:red;">
 			<?php
 				if(isset($_SESSION['error'])) 
 				{
 					echo $_SESSION['error'];
 					unset($_SESSION['error']);
 				}
+			?>
+		</p>
+		<p style="color:green;">
+			<?php
 				if(isset($_SESSION['statusReg'])) 
 				{
 					echo $_SESSION['statusReg'];
 					unset($_SESSION['statusReg']);
 				}
 			?>
-		</div>
+		</p>
 
 		<div class="form-actions">
 			<input type="submit" class="btn btn-info pull-right" name="btnsubmit" id="btnsubmit" value="Login"/>

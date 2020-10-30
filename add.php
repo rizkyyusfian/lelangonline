@@ -36,10 +36,9 @@
 <link href="assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="style/home_style.css">
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -110,25 +109,49 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<form id="frmData" method="POST" action="process/add_process.php" enctype=multipart/form-data>
-				<h1>Welcome, <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
-				<h3>ADD ITEM</h3>
-				<p>isi data mengenai item yang akan dilelang</p>
-					<table>
-						<tr>
-							<td style="text-align: center;"><label>Nama Barang :</label></td>
-							<td><input type="text" name="itemname"></td>
-						</tr>
-						<tr>
-							<td style="text-align: center;"><label>Harga Awal :</label></td>
-							<td><input type="text" name="itemprice"></td>
-						</tr>
-						<tr>
-							<td style="text-align: center;"><label>Gambar :</label></td>
-							<td><input type="file" name="itempicture"></td>
-						</tr>
-					</table>
-					<br><br>
-					<button id="btnSubmit">Add Item</button>
+				<h1>Welcome <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+				<h3>Isi data item yang ingin anda lelang</h3>
+				<br><br>
+				<div class="form-body">
+					<div class="form-group">
+						<label>Nama Item :</label>
+						<div class="input-icon">
+							<i class="fa fa-clipboard"></i>
+							<input type="text" name="itemname" class="form-control" placeholder="Isi Nama Item">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label>Harga</label>
+						<div class="input-icon">
+							<i class="fa fa-money"></i>
+							<input type="text" name="itemprice" class="form-control" placeholder="Isi Harga awal Item">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label>Choose Image</label>
+						<div class="input-icon">
+							<i class="fa fa-file-image-o"></i>
+							<input type="file" name="itempicture" class="form-control" placeholder="Pilih Gambar">
+						</div>
+						<p>
+							<?php
+								if(isset($_SESSION['statusAdd'])) 
+								{
+									echo $_SESSION['statusAdd'];
+									unset($_SESSION['statusAdd']);
+								}
+							?>
+						</p>
+					</div>
+
+					<div>
+						<button class="btn btn-info" id="btnSubmit" name="btnsubmit">Add Item</button>
+						<a href="home.php" class="btn btn-default">Cancel</a>
+					</div>
+
+				</div>
 			</form>
 		</div>
 	</div>
@@ -213,9 +236,7 @@ $("#btnSubmit").click(function(){
        contentType: false,
        enctype: 'multipart/form-data',
        processData: false,
-       success: function (response) {
-         alert(response);
-       }
+       success: function (response) {}
    });
 });
 </script>
