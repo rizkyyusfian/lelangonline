@@ -41,13 +41,6 @@
 </head>
 <!-- BEGIN BODY -->
 <body class="login">
-	<?php
-		if(isset($_SESSION['error'])) 
-		{
-			echo $_SESSION['error'];
-			unset($_SESSION['error']);
-		}
-	?>
 <!-- BEGIN LOGO -->
 <div class="logo">
 	<a href="">
@@ -80,6 +73,16 @@
 				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passlogin" id="passlogin" required/>
 			</div>
 		</div>
+		<div class="form-group">
+			<?php
+				if(isset($_SESSION['error'])) 
+				{
+					echo $_SESSION['error'];
+					unset($_SESSION['error']);
+				}
+			?>
+		</div>
+
 		<div class="form-actions">
 			<input type="submit" class="btn btn-info pull-right" name="btnsubmit" id="btnsubmit" value="Login"/>
 		</div>

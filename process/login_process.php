@@ -12,7 +12,7 @@ if(isset($_POST['btnsubmit'])) {
 	$iduser = $_POST['idlogin'];
 	$password = $_POST['passlogin'];
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "pweb_dbuas_bidding");
+	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
 	$sql0 = "select salt from users where iduser=?";
 	$stmt = $mysqli->prepare($sql0);

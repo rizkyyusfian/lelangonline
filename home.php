@@ -115,7 +115,85 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			Disini Isinya
+		<h1>Welcome, <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+<table>	
+	<thead>
+		<tr>
+			<th>Id Item</th>
+			<th>Id Owner</th>
+			<th>Item Name</th>
+			<th>Date Posted</th>
+			<th>Initial Price</th>
+			<th>Status</th>
+			<th>Image</th>
+			<th>Menu</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php 
+		$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+
+		$sql = "select iditem, iduser_owner ,name, date_posting, price_initial, status, image_extension from items";
+		$stmt = $mysqli->prepare($sql);
+
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$hasil = "";
+		while($row = $result->fetch_assoc())
+		{
+			$hasil = $hasil."<tr>";
+			$hasil .= "<td>".$row['iditem']."</td>";
+			$hasil .= "<td>".$row['iduser_owner']."</td>";
+			if($row['status'] == "OPEN")
+			{
+				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
+				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+			}
+			else if($row['iduser_owner'] == $_SESSION['mylogin_username'])
+			{
+				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
+				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+			}
+			else if($row['status'] == "SOLD")
+			{
+				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
+				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+			}
+			else
+			{
+				$hasil .= "<td>".$row['name']."</td>";
+			}
+			$hasil .= "<td>".$row['date_posting']."</td>";
+			$hasil .= "<td>Rp. ".number_format($row['price_initial'])."</td>";
+			$hasil .= "<td>".$row['status']."</td>";
+			$foto   = "folder_item/".$row['name'].".".$row['image_extension'];
+			$hasil .= "<td><img src='$foto'></td>";
+			if($row['iduser_owner'] == $_SESSION['mylogin_username']) 
+			{
+				if($row['status'] == "OPEN")
+				{
+					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input type='submit' name='btnCancel' value='Cancel'></form></td>";
+				}
+				elseif ($row['status'] == "CANCEL") 
+				{
+					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input type='submit' name='btnOpen' value='Open'></form></td>";
+				}
+				elseif ($row['status'] == "SOLD")
+				{
+					$hasil .= "<td></td>";
+				}
+			}
+			else
+			{
+				$hasil .= "<td></td>";
+			}
+			$hasil .= "</tr>";
+		}
+		echo $hasil;
+		$mysqli->close();
+		?>
+	</tbody>
+</table>
 		</div>
 	</div>
 	<!-- END CONTENT -->

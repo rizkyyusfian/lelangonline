@@ -9,19 +9,21 @@ if($_POST['btnsubmit']) {
 
 	if($password != $passwordrepeat)
 	{
-		//$_SESSION['error'] = "Password tidak sama";
+		$_SESSION['error'] = "Password tidak sama";
 		header("location: ../register.php");
 	}
+	else 
+	{
+		$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "pweb_dbuas_bidding");
-
-	$salt = substr(sha1(session_id().strtotime("now")), 0, 10);
-	$pwd_hash = sha1(sha1($password).$salt);
-
-	$sql = "INSERT INTO users VALUES(?,?,?,?)";
-	$stmt = $mysqli->prepare($sql);
-	$stmt->bind_param("ssss", $iduser, $name, $pwd_hash, $salt);
-	$stmt->execute();
-	$mysqli->close();
-	header("location: ../login.php");
+		$salt = substr(sha1(session_id().strtotime("now")), 0, 10);
+		$pwd_hash = sha1(sha1($password).$salt);
+	
+		$sql = "INSERT INTO users VALUES(?,?,?,?)";
+		$stmt = $mysqli->prepare($sql);
+		$stmt->bind_param("ssss", $iduser, $name, $pwd_hash, $salt);
+		$stmt->execute();
+		$mysqli->close();
+		header("location: ../login.php");
+	}
 }

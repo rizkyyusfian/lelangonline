@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- BEGIN HEAD -->
@@ -51,14 +54,14 @@
 			<label class="control-label visible-ie8 visible-ie9">ID User</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idreg" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="ID User" name="idreg" required/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Username</label>
+			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="namereg" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Full Name" name="namereg" required/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -76,6 +79,15 @@
 					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="passregrepeat" required"/>
 				</div>
 			</div>
+		</div>
+		<div class="form-group">
+			<?php
+				if(isset($_SESSION['error'])) 
+				{
+					echo $_SESSION['error'];
+					unset($_SESSION['error']);
+				}
+			?>
 		</div>
 		<div class="form-group">
 			<label>
