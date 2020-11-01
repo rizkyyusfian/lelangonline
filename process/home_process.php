@@ -7,7 +7,7 @@ if($_POST['btnCancel'])
 	$iditem = $_GET['iditem'];
 	$iduser = $_GET['iduser_owner'];
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "pweb_dbuas_bidding");
+	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
 	$sql = "update items set status=? where iditem=? and iduser_owner=?";
 	$stmt = $mysqli->prepare($sql);
@@ -22,7 +22,7 @@ if ($_POST['btnOpen'])
 	$iduser = $_GET['iduser_owner'];
 	$iditem = $_GET['iditem'];
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "pweb_dbuas_bidding");
+	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
 	$sql = "UPDATE items set status=? where iditem=? AND iduser_owner=?";
 	$stmt = $mysqli->prepare($sql);

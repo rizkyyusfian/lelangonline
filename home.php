@@ -136,7 +136,7 @@
 			<th>Initial Price</th>
 			<th>Status</th>
 			<th>Image</th>
-			<th>Menu</th>
+			<th>Detail</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -182,15 +182,15 @@
 			{
 				if($row['status'] == "OPEN")
 				{
-					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-info' type='submit' name='btnCancel' value='Cancel'></form></td>";
+					$hasil .= "<td>Item is <b>OPEN</b> for bid.<br>To cancel click :<br><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-warning' type='submit' name='btnCancel' value='Cancel'></form></td>";
 				}
 				elseif ($row['status'] == "CANCEL") 
 				{
-					$hasil .= "<td><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-info' type='submit' name='btnOpen' value='Open'></form></td>";
+					$hasil .= "<td>Item is <b>CLOSE</b> for bid.<br>To open click :<br><form method='POST' action='process/home_process.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."'><input class='btn btn-info' type='submit' name='btnOpen' value='Open'></form></td>";
 				}
 				elseif ($row['status'] == "SOLD")
 				{
-					$hasil .= "<td></td>";
+					$hasil .= "<td>Item is <b>SOLD</b></td>";
 				}
 			}
 			else
