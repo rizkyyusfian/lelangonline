@@ -108,6 +108,7 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
+		
 			<form id="frmData" method="POST" action="process/add_process.php" enctype=multipart/form-data>
 				<h1>Welcome <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
 				<h3>Isi data item yang ingin anda lelang</h3>
@@ -153,6 +154,7 @@
 
 				</div>
 			</form>
+
 		</div>
 	</div>
 	<!-- END CONTENT -->
@@ -224,22 +226,7 @@ jQuery(document).ready(function() {
 });
 </script>
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
-$("#btnSubmit").click(function(){
-	var formData = new FormData($("#frmData")[0]);
-   $.ajax({
-       url: 'process/add_process.php',
-       type: 'POST',
-       data: formData,
-       async: false,
-       cache: false,
-       contentType: false,
-       enctype: 'multipart/form-data',
-       processData: false,
-       success: function (response) {}
-   });
-});
-</script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
