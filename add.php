@@ -226,7 +226,6 @@ jQuery(document).ready(function() {
 });
 </script>
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
-
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
