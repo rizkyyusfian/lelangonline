@@ -36,8 +36,10 @@
 <link href="assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<!-- <link rel="stylesheet" type="text/css" href="style/home_style.css"> -->
-<script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href=""/>
 </head>
@@ -126,7 +128,7 @@
 			?>
 		</p>
 		<h3><b>List Items</b></h3>
-<table class="table">
+<table class="table" id="tes1">
 	<thead>
 		<tr>
 			<th>Id Item</th>
@@ -223,6 +225,7 @@
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
+<script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <script src="assets/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
@@ -253,6 +256,10 @@
 <script src="assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/scripts/app.js" type="text/javascript"></script>
@@ -272,9 +279,9 @@ jQuery(document).ready(function() {
    Index.initKnowElements();
    Index.initDashboardDaterange();
    Tasks.initDashboardWidget();
+   $('#tes1').DataTable();
 });
 </script>
-<script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
