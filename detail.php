@@ -87,7 +87,7 @@
 					</form>
 				</li>
 				<li class="start active ">
-					<a href="#">
+					<a href="home.php">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>

@@ -132,7 +132,7 @@
 	<thead>
 		<tr>
 			<th>Id Item</th>
-			<th>Id Owner</th>
+			<th>Owner</th>
 			<th>Item Name</th>
 			<th>Date Posted</th>
 			<th>Initial Price</th>
@@ -145,7 +145,7 @@
 		<?php 
 		$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
-		$sql = "select iditem, iduser_owner ,name, date_posting, price_initial, status, image_extension from items";
+		$sql = "select items.iditem, items.iduser_owner, users.name as owner, items.name, items.date_posting, items.price_initial, items.status, items.image_extension from items INNER JOIN users on items.iduser_owner = users.iduser";
 		$stmt = $mysqli->prepare($sql);
 
 		$stmt->execute();
@@ -155,7 +155,7 @@
 		{
 			$hasil = $hasil."<tr>";
 			$hasil .= "<td>".$row['iditem']."</td>";
-			$hasil .= "<td>".$row['iduser_owner']."</td>";
+			$hasil .= "<td>".$row['owner']."</td>";
 			if($row['status'] == "OPEN")
 			{
 				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
