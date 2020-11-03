@@ -1,6 +1,6 @@
 <?php 
-	// session_start();
-	// date_default_timezone_set("Asia/Jakarta");
+	session_start();
+	date_default_timezone_set("Asia/Jakarta");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -33,11 +33,12 @@
 <link href="assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="style/home_style.css">
-<link rel="stylesheet" type="text/css" href="style/detail_style.css">
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
+<style type="text/css">
+	.hide {display: none;}
+</style>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -113,120 +114,113 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php
-				if(isset($_SESSION['mylogin_username']))
-{
-	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+			<?php
+				if(isset($_SESSION['mylogin_username'])) {
+					$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
-	$iditem = $_GET['iditem'];
-	$iduser = $_GET['iduser_owner'];
-	$idoffer = $_SESSION['mylogin_username'];
-	$is_winner = 0;
-	$price = $_GET['price_initial'];
+					$iditem = $_GET['iditem'];
+					$iduser = $_GET['iduser_owner'];
+					$idoffer = $_SESSION['mylogin_userid'];
+					$is_winner = 0;
+					$price = $_GET['price_initial'];
+					
+					$msg = "";
+					if (isset($_POST['submit'])) {
+						$offer = $_POST['bid'];
+						if($offer >= $price) {
+							if($offer >= $priceBefore) {
 
-	if (isset($_POST['submit']))
-	{
-		$offer = $_POST['bid'];
-		if($offer >= $price)
-		{
-			$sql = "insert into biddings values(?,?,?,?)";
-			$stmt = $mysqli->prepare($sql);
-			$stmt->bind_param("sidi", $idoffer, $iditem, $offer, $is_winner);
-			$stmt->execute();
-		}
-		else
-		{
-			echo "Tawaran tidak boleh lebih rendah dari nilai awal!";
-		}
-	}
-
-	$sql = "select * from items where iditem=?";
-	$stmt = $mysqli->prepare($sql);
-	$stmt->bind_param("s", $iditem);
-	$stmt->execute();
-	$result = $stmt->get_result();
-
-	if($row = $result->fetch_assoc()) 
-	{
-		echo "<h3>".$row['name']."</h3>";
-		echo "Pemilik : <b>".$row['iduser_owner']."</b>";
-		echo "<br>";
-		echo "Nilai Awal Bid : Rp. ".number_format($row['price_initial']);
-		echo "<br>";
-		echo "Tanggal Postingan : ".$row['date_posting'];
-		echo "<br>";
-		echo "Status : ".$row['status'];
-		echo "<p><img src='folder_item/".$row['name'].".".$row['image_extension']."'' alt='".$row['name']."'></p>";
-
-		$sql2 = "select * from biddings where iditem=? ORDER BY price_offer ASC";
-		$stmt = $mysqli->prepare($sql2);
-		$stmt->bind_param("i", $iditem);
-		$stmt->execute();
-		$result2 = $stmt->get_result();
-
-		echo "<table>";
-		echo "<tr><th>Nama</th><th>Bid</th><th>Winner</th></tr>";
-		while ($row2 = $result2->fetch_assoc())
-		{
-			echo "<tr>";
-			echo "<td>".$row2['iduser']."</td>";
-			echo "<td>".number_format($row2['price_offer'])."</td>";
-			if($row['iduser_owner'] == $_SESSION['mylogin_username'])
-			{
-				if($row['status'] == "SOLD")
-				{
-					if($row2['is_winner'] == 1)
-					{
-						echo "<td>Winner</td>";
+							}
+							$sql = "insert into biddings values(?,?,?,?)";
+							$stmt = $mysqli->prepare($sql);
+							$stmt->bind_param("sidi", $idoffer, $iditem, $offer, $is_winner);
+							$stmt->execute();
+						} else {
+							$msg = "Tawaran tidak boleh lebih rendah dari nilai awal bid!";
+						}
 					}
-					else
-					{
-						echo "<td></td>";
-					}
+
+						// $sql = "select * from items where iditem=?";
+						$sql = "select items.iditem, items.iduser_owner, users.name as owner, items.name, items.date_posting, items.price_initial, items.status, items.image_extension from items INNER JOIN users on items.iduser_owner = users.iduser where iditem=?";
+						$stmt = $mysqli->prepare($sql);
+						$stmt->bind_param("s", $iditem);
+						$stmt->execute();
+						$result = $stmt->get_result();
+						
+						if($row = $result->fetch_assoc()) 
+						{
+							echo "<h3>".$row['name']."</h3>";
+							echo "Pemilik : <b>".$row['owner']."</b>";
+							echo "<br>";
+							echo "Nilai Awal Bid : Rp. ".number_format($row['price_initial']);
+							echo "<br>";
+							echo "Tanggal Postingan : ".$row['date_posting'];
+							echo "<br>";
+							echo "Status : ".$row['status'];
+							echo "<p><img style='height:400px; width:400px;' src='folder_item/".$row['name'].".".$row['image_extension']."'' alt='".$row['name']."'></p>";
+
+							$sql2 = "select * from biddings where iditem=? ORDER BY price_offer ASC";
+							$stmt = $mysqli->prepare($sql2);
+							$stmt->bind_param("i", $iditem);
+							$stmt->execute();
+							$result2 = $stmt->get_result();
+							
+							echo "<br><br>";
+							echo "<h1>List Bidding</h1>";
+							echo "<table class='table'>";
+							echo "<thead><tr><th>Nama</th><th>Bid</th><th>Winner</th></tr></thead>";
+							while ($row2 = $result2->fetch_assoc())
+							{
+								echo "<tbody><tr>";
+								echo "<td>".$row2['iduser']."</td>";
+								echo "<td>".number_format($row2['price_offer'])."</td>";
+								if($row['iduser_owner'] == $_SESSION['mylogin_userid']) {
+									if($row['status'] == "SOLD") {
+										if($row2['is_winner'] == 1) {
+											echo "<td>Winner</td>";
+										} else {
+											echo "<td></td>";
+										}
+									} else {
+										echo "<td><form id='frmWin' method='POST' action='process/detail_process.php?iditem=".$row['iditem']."&iduser_owner=".$row2['iduser']."&price_initial=".$row['price_initial']."'><input class='btn btn-info btn-xs' type='submit' name='btnWin' value='Win'></form></td>";
+									}
+								} else {
+									if($row['status'] == "SOLD") {
+										if($row2['is_winner'] == 1) {
+											echo "<td>Winner</td>";
+										}
+										else {
+											echo "<td></td>";
+										}
+									} else {
+										echo "<td>Waiting for result</td>";
+									}
+								}
+								echo "</tr>";
+							}
+							echo "</tbody></table>";
+						}
+						$mysqli->close();
+				} else {
+					header("location: login.php");
 				}
-				else
-				{
-					echo "<td><form id='frmWin' method='POST' action='process/detail_process.php?iditem=".$row['iditem']."&iduser_owner=".$row2['iduser']."&price_initial=".$row['price_initial']."'><input type='submit' name='btnWin' value='Win'></form></td>";
-				}
-			}
-			else
-			{
-				if($row['status'] == "SOLD")
-				{
-					if($row2['is_winner'] == 1)
-					{
-						echo "<td>Winner</td>";
-					}
-					else
-					{
-						echo "<td></td>";
-					}
-				}
-				else
-				{
-					echo "<td></td>";
-				}
-			}
-			echo "</tr>";
-		}
-		echo "</table>";
-	}
-	$mysqli->close();
-}
-else
-{
-	header("location: login.php");
-}
-	?>
-		<form id="frmBid" method="POST" action="detail.php?iditem=<?=$_GET['iditem']?>&iduser_owner=<?=$_GET['iduser_owner']?>&price_initial=<?=$_GET['price_initial']?>">
-		<label>Penawaran :</label>
-		<input type="number" name="bid" min="1" max="1000000000">
-		<input type="submit" name="submit" value="Bid">
-	</form>
-	<br><br>
-	<a href="home.php">Back To Home</a>
+					
+			?>
+		<form class="form-group" id="frmBid" method="POST" action="detail.php?iditem=<?=$_GET['iditem']?>&iduser_owner=<?=$_GET['iduser_owner']?>&price_initial=<?=$_GET['price_initial']?>">
+		<div>
+			<label>Penawaran :</label>
+			<div class="input-icon left input-large margin-top-10">
+				<i class="fa fa-money"></i>
+				<input class="form-control input-large" type="number" name="bid" min="1" max="1000000000" placeholder="Place your bid"><br>
+			</div>
+		</div>
+		<?php echo "<p style='color:red; font-weight: bold;'>".$msg."</p>"; ?>
+		<input class="btn btn-info" type="submit" name="submit" value="Bid">
+		</form>
+		<a class="btn btn-default" href="home.php">Back To Home</a>
+
 	<?php 
-		if($_GET['iduser_owner'] == $_SESSION['mylogin_username'] or $row['status'] == "SOLD")
+		if($_GET['iduser_owner'] == $_SESSION['mylogin_userid'] or $row['status'] == "SOLD")
 		{
 			echo "<script type='text/javascript'>";
 			echo "$(document).ready(function(){";

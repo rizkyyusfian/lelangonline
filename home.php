@@ -159,21 +159,21 @@
 			if($row['status'] == "OPEN")
 			{
 				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
-				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+				$hasil .= "<td><b><a style='color:blue; text-decoration:none;' href='$url'>".$row['name']."</a></b></td>";
 			}
 			else if($row['iduser_owner'] == $_SESSION['mylogin_username'])
 			{
 				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
-				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+				$hasil .= "<td><b><a href='$url'>".$row['name']."</a></b></td>";
 			}
 			else if($row['status'] == "SOLD")
 			{
 				$url    = "detail.php?iditem=".$row['iditem']."&iduser_owner=".$row['iduser_owner']."&price_initial=".$row['price_initial'];
-				$hasil .= "<td><a href='$url'>".$row['name']."</a></td>";
+				$hasil .= "<td><b><a href='$url'>".$row['name']."</a></b></td>";
 			}
 			else
 			{
-				$hasil .= "<td>".$row['name']."</td>";
+				$hasil .= "<td><b>".$row['name']."</b></td>";
 			}
 			$hasil .= "<td>".$row['date_posting']."</td>";
 			$hasil .= "<td>Rp. ".number_format($row['price_initial'])."</td>";

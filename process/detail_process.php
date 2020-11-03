@@ -9,7 +9,7 @@ if($_POST['btnWin'])
 	$price = $_GET['price_initial'];
 	$winner = 1;
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "pweb_dbuas_bidding");
+	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
 
 	$sql = "update items i inner join biddings b on i.iditem = b.iditem set i.status=?, b.is_winner=? where b.iditem=? AND b.iduser=?";
 	$stmt = $mysqli->prepare($sql);
