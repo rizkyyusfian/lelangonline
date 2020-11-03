@@ -167,7 +167,7 @@
 							echo "Tanggal Postingan : ".$row['date_posting'];
 							echo "<br>";
 							echo "Status : ".$row['status'];
-							echo "<p><img style='height:400px; width:400px;' src='folder_item/".$row['name'].".".$row['image_extension']."'' alt='".$row['name']."'></p>";
+							echo "<p><img style='height:400px; width:400px; border:3px solid black;' src='folder_item/".$row['name'].".".$row['image_extension']."'' alt='".$row['name']."'></p>";
 
 							$sql2 = "select * from biddings where iditem=? ORDER BY price_offer ASC";
 							$stmt = $mysqli->prepare($sql2);
