@@ -123,24 +123,34 @@
 					$idoffer = $_SESSION['mylogin_userid'];
 					$is_winner = 0;
 					$price = $_GET['price_initial'];
-					
+
 					$msg = "";
 					if (isset($_POST['submit'])) {
-						$offer = $_POST['bid'];
-						if($offer >= $price) {
-							if($offer >= $priceBefore) {
 
+						$sql3 = "select *, MAX(price_offer) as highestbid from biddings where iditem=?";
+						$stmt = $mysqli->prepare($sql3);
+						$stmt->bind_param("s", $iditem);
+						$stmt->execute();
+						$result = $stmt->get_result();
+						$row = $result->fetch_assoc();
+
+						$highestbid = $row['highestbid'];
+						$offer = $_POST['bid'];
+
+						if($offer >= $price) {
+							if($offer >= $highestbid) {
+								$sql = "insert into biddings values(?,?,?,?)";
+								$stmt = $mysqli->prepare($sql);
+								$stmt->bind_param("sidi", $idoffer, $iditem, $offer, $is_winner);
+								$stmt->execute();
+							} else {
+								$msg = "Tawaran tidak boleh lebih rendah dari bid yang sudah ada!";
 							}
-							$sql = "insert into biddings values(?,?,?,?)";
-							$stmt = $mysqli->prepare($sql);
-							$stmt->bind_param("sidi", $idoffer, $iditem, $offer, $is_winner);
-							$stmt->execute();
 						} else {
 							$msg = "Tawaran tidak boleh lebih rendah dari nilai awal bid!";
 						}
 					}
 
-						// $sql = "select * from items where iditem=?";
 						$sql = "select items.iditem, items.iduser_owner, users.name as owner, items.name, items.date_posting, items.price_initial, items.status, items.image_extension from items INNER JOIN users on items.iduser_owner = users.iduser where iditem=?";
 						$stmt = $mysqli->prepare($sql);
 						$stmt->bind_param("s", $iditem);
@@ -177,7 +187,7 @@
 								if($row['iduser_owner'] == $_SESSION['mylogin_userid']) {
 									if($row['status'] == "SOLD") {
 										if($row2['is_winner'] == 1) {
-											echo "<td>Winner</td>";
+											echo "<td><b>Winner</b></td>";
 										} else {
 											echo "<td></td>";
 										}
@@ -187,10 +197,10 @@
 								} else {
 									if($row['status'] == "SOLD") {
 										if($row2['is_winner'] == 1) {
-											echo "<td>Winner</td>";
+											echo "<td><b>Winner</b></td>";
 										}
 										else {
-											echo "<td></td>";
+											echo "<td>Waiting for result</td>";
 										}
 									} else {
 										echo "<td>Waiting for result</td>";
