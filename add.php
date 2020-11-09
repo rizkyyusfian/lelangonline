@@ -1,9 +1,9 @@
 <?php
-	// session_start();
-	// if(!isset($_SESSION['mylogin_username']))
-	// {
-	// 	header("location: login.php");
-	// }
+	session_start();
+	if(!isset($_SESSION['mylogin_username']))
+	{
+		header("location: login.php");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -36,10 +36,9 @@
 <link href="assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="style/home_style.css">
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -89,21 +88,15 @@
 					</form>
 				</li>
 				<li class="start active ">
-					<a href="#">
+					<a href="home.php">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
 					</a>
 				</li>
 				<li >
-					<a href="home.php">
-					<i class="icon-puzzle"></i>
-					<span class="title">Home</span>
-					</a>
-				</li>
-				<li >
 					<a href="process/login_process.php?action=logout">
-					<i class="icon-present"></i>
+					<i class="fa fa-level-down"></i>
 					<span class="title">Log Out</span>
 					</a>
 				</li>
@@ -115,7 +108,53 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			Disini isinya
+		
+			<form id="frmData" method="POST" action="process/add_process.php" enctype=multipart/form-data>
+				<h1>Welcome <b><?php echo $_SESSION['mylogin_username'] ?></b></h1>
+				<h3>Isi data item yang ingin anda lelang</h3>
+				<br><br>
+				<div class="form-body">
+					<div class="form-group">
+						<label>Nama Item :</label>
+						<div class="input-icon">
+							<i class="fa fa-clipboard"></i>
+							<input type="text" name="itemname" class="form-control" placeholder="Isi Nama Item">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label>Harga</label>
+						<div class="input-icon">
+							<i class="fa fa-money"></i>
+							<input type="text" name="itemprice" class="form-control" placeholder="Isi Harga awal Item">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label>Choose Image</label>
+						<div class="input-icon">
+							<i class="fa fa-file-image-o"></i>
+							<input type="file" name="itempicture" class="form-control" placeholder="Pilih Gambar">
+						</div>
+						<p>
+							<?php
+								if(isset($_SESSION['statusAdd'])) 
+								{
+									echo $_SESSION['statusAdd'];
+									unset($_SESSION['statusAdd']);
+								}
+							?>
+						</p>
+					</div>
+
+					<div>
+						<button class="btn btn-info" id="btnSubmit" name="btnsubmit">Add Item</button>
+						<a href="home.php" class="btn btn-default">Cancel</a>
+					</div>
+
+				</div>
+			</form>
+
 		</div>
 	</div>
 	<!-- END CONTENT -->
@@ -187,24 +226,6 @@ jQuery(document).ready(function() {
 });
 </script>
 <script type="text/javascript" src="style/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
-$("#btnSubmit").click(function(){
-	var formData = new FormData($("#frmData")[0]);
-   $.ajax({
-       url: 'process/add_process.php',
-       type: 'POST',
-       data: formData,
-       async: false,
-       cache: false,
-       contentType: false,
-       enctype: 'multipart/form-data',
-       processData: false,
-       success: function (response) {
-         alert(response);
-       }
-   });
-});
-</script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

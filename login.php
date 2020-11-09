@@ -37,17 +37,9 @@
 <link href="assets/css/pages/login.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
-<body>
-	<?php
-		if(isset($_SESSION['error'])) 
-		{
-			echo $_SESSION['error'];
-			unset($_SESSION['error']);
-		}
-	?>
-	<!-- BEGIN BODY -->
+<!-- BEGIN BODY -->
 <body class="login">
 <!-- BEGIN LOGO -->
 <div class="logo">
@@ -59,7 +51,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="process/login_process.php" method="post">
+	<form class="login-form" action="process/login_process.php" method="POST">
 		<h3 class="form-title">Login to your account</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -71,19 +63,37 @@
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idlogin" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idlogin" id="idlogin" required/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
 			<div class="input-icon">
 				<i class="fa fa-lock"></i>
-				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passlogin" required/>
+				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passlogin" id="passlogin" required/>
 			</div>
 		</div>
+		<p style="color:red;">
+			<?php
+				if(isset($_SESSION['error'])) 
+				{
+					echo $_SESSION['error'];
+					unset($_SESSION['error']);
+				}
+			?>
+		</p>
+		<p style="color:green;">
+			<?php
+				if(isset($_SESSION['statusReg'])) 
+				{
+					echo $_SESSION['statusReg'];
+					unset($_SESSION['statusReg']);
+				}
+			?>
+		</p>
+
 		<div class="form-actions">
-			<button type="submit" class="btn btn-info pull-right" name="btnsubmit">
-			Login </button>
+			<input type="submit" class="btn btn-info pull-right" name="btnsubmit" id="btnsubmit" value="Login"/>
 		</div>
 		<div class="create-account">
 			<p>
@@ -95,7 +105,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-	2020 &copy;MRYY. Admin Dashboard Template.
+	2020 &copy;AuksienTeam
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

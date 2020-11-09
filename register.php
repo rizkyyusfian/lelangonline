@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- BEGIN HEAD -->
@@ -28,7 +31,7 @@
 <link href="assets/css/pages/login.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href=""/>
 </head>
 <!-- BEGIN BODY -->
 <body class="login">
@@ -51,14 +54,14 @@
 			<label class="control-label visible-ie8 visible-ie9">ID User</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="idreg" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="ID User" name="idreg" required/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Username</label>
+			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="namereg" required/>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Full Name" name="namereg" required/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -77,6 +80,15 @@
 				</div>
 			</div>
 		</div>
+		<p style="color:red;">
+			<?php
+				if(isset($_SESSION['error'])) 
+				{
+					echo $_SESSION['error'];
+					unset($_SESSION['error']);
+				}
+			?>
+		</p>
 		<div class="form-group">
 			<label>
 			<input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
@@ -85,7 +97,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<input type="submit" id="register-submit-btn" class="btn btn-info pull-right" name="btnsubmit" value="Sign Up"><i class="m-icon-swapright m-icon-white"></i>
+			<input type="submit" id="btnsubmit" class="btn btn-info pull-right" name="btnsubmit" value="Sign Up">
 		</div>
 			<div class="create-account">
 			<p>Already have an account ?&nbsp; <a href="login.php" id="register-btn">Sign in Here</a>
@@ -97,7 +109,7 @@
 <!-- END REGISTER -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-	 2020 &copy;MRYY. Admin Dashboard Template.
+	 2020 &copy;AuksienTeam
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
