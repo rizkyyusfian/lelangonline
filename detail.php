@@ -116,7 +116,7 @@
 		<div class="page-content">
 			<?php
 				if(isset($_SESSION['mylogin_username'])) {
-					$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+					$mysqli = new mysqli("localhost", "root", "", "mtt_lelangonline");
 
 					$iditem = $_GET['iditem'];
 					$iduser = $_GET['iduser_owner'];
