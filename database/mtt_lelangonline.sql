@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Nov 2020 pada 08.07
+-- Waktu pembuatan: 11 Nov 2020 pada 14.05
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -49,7 +49,8 @@ INSERT INTO `biddings` (`iduser`, `iditem`, `price_offer`, `is_winner`) VALUES
 ('roby', 2, 4500000, 0),
 ('yusfian', 1, 2700000, 0),
 ('yusfian', 4, 4300000, 0),
-('yusfian', 5, 300000, 0);
+('yusfian', 5, 300000, 0),
+('yusfian', 6, 450000, 0);
 
 -- --------------------------------------------------------
 
