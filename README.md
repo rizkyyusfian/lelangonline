@@ -30,7 +30,7 @@ Langkah - langkah menginstall aplikasi AuksienOnline :
 ```
 1. Import Database
 2. ganti setting database di tiap file
-3.  download file atau clone repository di dalam file xampp/htdocs/
+3. download file atau clone repository di dalam file xampp/htdocs/
 ```
 
 List Akun dan Pass :
