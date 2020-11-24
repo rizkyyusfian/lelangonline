@@ -36,20 +36,20 @@ Langkah - langkah menginstall aplikasi AuksienOnline :
 List Akun dan Pass :
 ```
 1. 
-username : yusfian
-pass :yusfian
+username: yusfian
+pass 	:yusfian
 
 2. 
-username : ger
-pass :gerz
+username: ger
+pass 	:gerz
 
 3. 
-username : rizky
-pass : 123
+username: rizky
+pass 	: 123
 
 4.
-username : roby
-pass : roby
+username: roby
+pass 	: roby
 ```
 
 ## License
