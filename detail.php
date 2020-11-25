@@ -200,7 +200,7 @@
 											echo "<td><b>Winner</b></td>";
 										}
 										else {
-											echo "<td>Waiting for result</td>";
+											echo "<td>Lost</td>";
 										}
 									} else {
 										echo "<td>Waiting for result</td>";

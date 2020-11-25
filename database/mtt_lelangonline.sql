@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Nov 2020 pada 14.05
+-- Waktu pembuatan: 25 Nov 2020 pada 06.45
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -98,6 +98,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`iduser`, `name`, `password`, `salt`) VALUES
+('feby', 'Feby', 'a155dc74c1ce8a2dfd68e1cb930b8476afdd2179', '35bee7585d'),
 ('ger', 'Gerald', '3f60e5e0e3128799d59db887855d417bd63b77ed', '759cc4e765'),
 ('rizky', 'Muhammad Rizky', '30735139992f698fc041391dec49fe52a58326b2', '448364c2b2'),
 ('roby', 'Roby Firmansyah', '63e0f2ade3a20de20f27125c345dcf7e94c92ff9', '387c626300'),
