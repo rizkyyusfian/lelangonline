@@ -7,7 +7,7 @@
 * [Author](#author)
 
 ## Description
-Auksien Online merupakan aplikasi sederhana lelang online. mirip seperti lelang pada umumnya, namun lebih praktis karena dilakukan secara virtual melalui aplikasi kami secara online. dibuat menggunakan HTML, PHP, JQUERY, serta database menggunakan MySql
+Auksien Online merupakan aplikasi sederhana lelang online. mirip seperti lelang pada umumnya, namun lebih praktis karena dilakukan secara virtual melalui aplikasi kami secara online. dibuat menggunakan Vanilla PHP dan database menggunakan MySql
 
 ## Feature
 Aplikasi Auksien Online mempunyai beberapa fitur yaitu :
@@ -21,8 +21,6 @@ Aplikasi Auksien Online mempunyai beberapa fitur yaitu :
 aplikasi ini dibuat menggunakan : 
 * PHP :  7.3.1
 * MySql : 10.1.37-MariaDB
-* Jquery : 2.1.4
-* Html Backend Conquer Template 
 	
 ## Setup
 Langkah - langkah menginstall aplikasi AuksienOnline :
