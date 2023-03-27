@@ -14,7 +14,7 @@ if($_POST['btnsubmit']) {
 	}
 	else 
 	{
-		$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+		$mysqli = new mysqli("localhost", "root", "", "mtt_lelangonline");
 
 		$salt = substr(sha1(session_id().strtotime("now")), 0, 10);
 		$pwd_hash = sha1(sha1($password).$salt);

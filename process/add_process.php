@@ -25,7 +25,7 @@ function folder_exist($folder)
 	$itemstatus = "OPEN";
 	$itempicture = substr(basename($_FILES["itempicture"]["name"]), -3);
 
-	$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+	$mysqli = new mysqli("localhost", "root", "", "mtt_lelangonline");
 
 	$sql = "INSERT INTO items(iduser_owner, name, date_posting, price_initial, status, image_extension) VALUES(?,?,?,?,?,?)";
 	$stmt = $mysqli->prepare($sql);

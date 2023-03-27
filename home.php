@@ -143,7 +143,7 @@
 	</thead>
 	<tbody>
 		<?php 
-		$mysqli = new mysqli("localhost", "root", "mysql", "mtt_lelangonline");
+		$mysqli = new mysqli("localhost", "root", "", "mtt_lelangonline");
 
 		$sql = "select items.iditem, items.iduser_owner, users.name as owner, items.name, items.date_posting, items.price_initial, items.status, items.image_extension from items INNER JOIN users on items.iduser_owner = users.iduser";
 		$stmt = $mysqli->prepare($sql);
