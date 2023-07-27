@@ -18,7 +18,7 @@ Auksien Online is a simple online auction application. similar to the auction sy
 * Details: view item details.
 	
 ## Technologies Used
-* PHP:  7.3.1.
+* Language: PHP 7.3.
 * Database: MySQL.
 	
 ## Setup
