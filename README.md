@@ -1,77 +1,46 @@
+# Web-based online auction using native PHP. 
+
 ## Table of contents
 * [Description](#description)
 * [Feature](#feature)
-* [Build With](#build-with)
+* [Technologies Used](#technologies-used)
 * [Setup](#setup)
 * [License](#license)
-* [Author](#author)
 
 ## Description
-Auksien Online merupakan aplikasi sederhana lelang online. mirip seperti lelang pada umumnya, namun lebih praktis karena dilakukan secara virtual melalui aplikasi kami secara online. dibuat menggunakan Vanilla PHP dan database menggunakan MySql
+Auksien Online is a simple online auction application. similar to the auction system in general, but more practical because it is done virtually through our online application. created using Native PHP and a database using MySQL. This application was created as a way of learning web programming using the PHP language.
 
 ## Feature
-Aplikasi Auksien Online mempunyai beberapa fitur yaitu :
-* Account Management : Register dan Login (Password encrypted using md5)
-* Home : daftar item yang dilelang dalam bentuk datatable
-* Add : menambahkan item untuk dilelang
-* Winner-choose : pemilik item dapat memilih pemenang dengan harga tertinggi
-* Detail : melihat detail item
+* Account Management: Register and Login (Password encrypted using MD5).
+* Home: a list of auctioned items in data table form.
+* Add: add items to be auctioned.
+* Choose Winner: The item owner can choose the winner with the highest price.
+* Details: view item details.
 	
-## Build With
-aplikasi ini dibuat menggunakan : 
-* PHP :  7.3.1
-* MySql : 10.1.37-MariaDB
+## Technologies Used
+* PHP:  7.3.1.
+* Database: MySQL.
 	
 ## Setup
-Langkah - langkah menginstall aplikasi AuksienOnline :
 
-```
-1. Import Database
-2. ganti setting username dan password database di tiap file
-3. download file atau clone repository di dalam file xampp/htdocs/
-```
+1. Import Database [`mtt_lelangonline`](https://github.com/rizkyyusfian/lelangonline/blob/main/database/mtt_lelangonline.sql)
+2. Change the database username and password settings in each file.
+3. Download the file or clone the repository in `xampp/htdocs/` file.
 
-List Akun dan Pass :
-```
-1. 
+### List of account username and password:
+``` 
 username: yusfian
-pass 	:yusfian
-
-2. 
+password: yusfian
+ 
 username: ger
-pass 	:gerz
-
-3. 
+password: gerz
+ 
 username: rizky
-pass 	: 123
+password: 123
 
-4.
 username: roby
-pass 	: roby
+password: roby
 ```
 
 ## License
-MIT License
-
-Copyright (c) 2020 AuksienTeam
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## Author
-AuksienTeam.
+This project is licensed under the [MIT License](LICENSE). You are free to use and modify the code as per the terms of the license.
